@@ -2,8 +2,29 @@
 
 using namespace std;
 
-//completsr insertion antes de subir
+void insert_ (int *a,int n)
+{
+    for(int i=1; i<n; i++)
+    {
+    int temp = a[i];
+    int min_ = 0;
+    int n = i-1;
 
+    while(min_ <= n){
+    int m = (min_+n)/2;
+        if (temp < a[m])
+            n = m - 1;
+        else
+            min_ = m + 1;
+    }
+
+    for (int j=i-1; j>=min_; j--){
+        a[j+1]=a[j];
+    }
+
+    a[min_] = temp;
+    }
+}
 bool lineal(int *a, int n,int b)
 {
     for(int i=0;i<n;i++)
@@ -111,6 +132,19 @@ int main(){
     {
         cout<<tt[i];
     }
+    cout<<endl;
+    int sl[5]={8,2,6,7,1};
+    for(int i=0; i<5; i++)
+    {
+        cout<<sl[i];
+    }
+    cout<<endl;
+    insert_(sl,5);
+    for(int i=0; i<5; i++)
+    {
+        cout<<sl[i];
+    }
+    cout<<endl;
 	return 0;
 }
 
