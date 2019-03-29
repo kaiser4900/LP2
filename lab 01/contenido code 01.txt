@@ -1,0 +1,11 @@
+contiene:
+-swap_
+	intercambiar el contenido de las variables sin una tercera.
+-pow_
+	potencia.
+-pow__
+	potencia recursiva.
+-indi
+	indicar el menor según el numero indicado.
+-palin
+	indicar si es palindromo.
