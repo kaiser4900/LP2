@@ -9,8 +9,8 @@ using namespace std;
 
 int *TA;
 int *TB;
-
 int N=pow(10,5);
+
 
 typedef void(*fun_sort)(int*,int);
 
@@ -29,6 +29,8 @@ bool test_sort(fun_sort sort, const int *A, int n)
     cout<<time<<" ";
     return true;
 }
+
+
 void insert_ (int *A,int n)
 {
     for(int i=1; i<n; i++)
@@ -52,58 +54,6 @@ void insert_ (int *A,int n)
     A[min_] = temp;
     }
 }
-bool lineal(int *a, int n,int b)
-{
-    for(int i=0;i<n;i++)
-    {
-        if(a[i]==b)
-        {
-            return true;
-        }
-    }
-    return false;
-}
-
-bool binary(int *a, int n, int b)
-{
-    int i=0, j=n;
-
-    while(i<j)
-    {
-        int m =(i+j)/2;
-
-        if(a[m]==b)
-            return true;
-
-        if(a[m]>b)
-            j=m;
-
-        else
-            i=m;
-    }
-
-    return false;
-}
-bool bin_r(int *a,int n,int x,int min_=0)
-{
-    n--;
-    if(min_>n)
-        return false;
-    int m=(min_+n)/2;
-
-    if(a[m]==x)
-        return true;
-    if(a[m]>x)
-    {
-        n=m;
-        bin_r(a,n,x,min_);
-    }
-    else
-    {
-        min_=m;
-        bin_r(a,n,x,min_);
-    }
-}
 
 void bubble_sort(int *A, int n)
 {
@@ -125,6 +75,7 @@ void bubble_sort(int *A, int n)
     }
 
 }
+
 void selection (int *A, int n)
 {
     n--;
@@ -140,6 +91,7 @@ void selection (int *A, int n)
         swap(A[i],A[menor]);
     }
 }
+
 int main()
 {
     srand(time(NULL));
@@ -168,7 +120,9 @@ int main()
                }
         cout<<endl;
         }
+
+    }
+        delete[]A;
         delete[]TA;
         delete[]TB;
-    }
 }
