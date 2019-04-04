@@ -28,23 +28,7 @@ bool test_sort(fun_sort sort, const int *A, int i, int n)
 
     for(int i=0; i<n; i++)
     {
-        if(TA[i+1]!=TB[i])
-        {
-            cout<<"TA"<<endl;
-            for(int j=0; j<n;j++)
-            {
-                cout<<TA[j]<<" ";
-            }
-            cout<<endl;
-            cout<<"TB"<<endl;
-            for(int j=0; j<n;j++)
-            {
-                cout<<TB[j]<<" ";
-            }
-            cout<<endl;
-
-            return false;
-        }
+        if(TA[i+1]!=TB[i]) return false;
     }
     cout<<time<<" ";
     return true;
@@ -94,7 +78,7 @@ int main()
 
     fun_sort sort[1]={merge_sort};
 
-    for(int n=100;n<=N;n*=10)
+    for(int n=100;n<N;n*=10)
     {
 
         for(int i=0; i<n; i++)
