@@ -35,9 +35,16 @@ class my_string
     //funcion size
 
     int my_size() const{ return i;}
-    friend ostream & operator << (ostream & os, const my_string &s);
     friend bool operator ==(const my_string& a, const my_string& b);
+    friend ostream & operator << (ostream & os, const my_string &s);
+    friend istream& operator >>(istream& is , my_string& a );
+
 };
+
+istream& operator >>(istream& is , my_string& a )
+{
+    return is>>a.punta;
+}
 
 ostream & operator << (ostream & os, const my_string &s)
     {
@@ -73,7 +80,9 @@ ostream & operator << (ostream & os, const my_string &s)
 
 int main()
 {
-    my_string s1("hola");
+    my_string s1;
+
+    cin>>s1;
 
     cout<< s1 << endl;
 
