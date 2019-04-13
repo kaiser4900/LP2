@@ -35,16 +35,15 @@ class my_string
     //funcion size
 
     int my_size() const{ return i;}
+    friend ostream & operator << (ostream & os, const my_string &s);
+    friend bool operator ==(const my_string& a, const my_string& b);
+};
 
-    //funcion para imprimir
-
-    friend ostream & operator << (ostream & os, const my_string &s)
+ostream & operator << (ostream & os, const my_string &s)
     {
             return os << s.punta;
 
     }
-    friend bool operator ==(const my_string& a, const my_string& b);
-};
 
 //funcion para devolver el char en []
 // const char& my_string::operator[](int & i)
