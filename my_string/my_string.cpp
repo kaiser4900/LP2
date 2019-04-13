@@ -5,42 +5,56 @@ using namespace std;
 class my_string
 {
     private:
-
-        char *punta;
+        int i=0;
+        char *punta; //definiendo el puntero para trabajar
 
     public:
 
-        my_string(const char *_punta=NULL)
-        {
+        my_string() {
+            punta = new char[i];
+        }
+
+        my_string(const char* a) {
         int i=0;
+
             while(punta[i]!=0)
             {
                 i++;
             }
-            tamanio=i;
+            i++;
 
-            punta= new char[tamanio];
-
-            for(int i=0; i<tamanio;i++)
-            {
-                punta[i]=_punta[i];
-            }
-        }
+		punta = new char[i];
+		for (int i = 0; i < i; ++i) {
+			punta[i] = a[i];
+		}
+	}
+        //destructor para limpiar el espacio de la memoria
 
         ~my_string(){delete[]punta;}
 
-    int my_size() const{ return tamanio;}
+    //funcion size
 
-    ostream & operator << (ostream & os, const my_string &s)
+    int my_size() const{ return i;}
+
+    //funcion para imprimir
+
+    friend ostream & operator << (ostream & os, const my_string &s)
     {
             return os << s.punta;
+
     }
+    friend bool operator ==(const my_string& a, const my_string& b);
 };
 
-
-bool operator ==(const my_string& a, const my_string& b)
+//funcion para devolver el char en []
+// const char& my_string::operator[](int & i)
+  //  {
+    //    return punta[i];
+    //}
+//funcion para ver si son iguales
+/*bool operator ==(const my_string& a, const my_string& b)
 {
-    if(a.tamanio == b.tamanio)
+    if(a.i == b.i)
     {
         int i=0;
         int c=0;
@@ -55,8 +69,8 @@ bool operator ==(const my_string& a, const my_string& b)
     else
         return false;
     }
-
-
+*/
+//main creando un my_string
 
 int main()
 {
@@ -66,3 +80,4 @@ int main()
 
     return 0;
 }
+//ya compila pero no imprime xd
