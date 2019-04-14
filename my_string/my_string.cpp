@@ -5,41 +5,115 @@ using namespace std;
 class my_string
 {
     private:
-        int i=0;
-        char *punta; //definiendo el puntero para trabajar
+        int tamanio=0;
+        char *punta;
 
     public:
 
         my_string() {
-            punta = new char[i];
+            punta = new char[tamanio];
         }
 
-        my_string(const char* a) {
+        my_string(const char* str='\0') {
         int i=0;
 
-            while(punta[i]!=0)
+            while(str[i]!='\0')
             {
                 i++;
             }
             i++;
 
-		punta = new char[i];
-		for (int i = 0; i < i; ++i) {
-			punta[i] = a[i];
+        tamanio=i;
+		punta = new char[tamanio];
+		for (int i = 0; i < tamanio; ++i) {
+			punta[i] = str[i];
 		}
 	}
-        //destructor para limpiar el espacio de la memoria
-
         ~my_string(){delete[]punta;}
 
-    //funcion size
+    int my_size() const{ return tamanio-1;}
 
-    int my_size() const{ return i;}
     friend bool operator ==(const my_string& a, const my_string& b);
+    const char& operator[](const int i);
+
+
+    friend bool operator <(const my_string& a, const my_string& b);
+    friend bool operator >(const my_string& a, const my_string& b);
+    my_string &operator =(const my_string& str);
+    my_string &operator +(const my_string& str);
+
+
+
+
     friend ostream & operator << (ostream & os, const my_string &s);
     friend istream& operator >>(istream& is , my_string& a );
 
+
 };
+my_string& my_string ::operator =(const my_string& str)
+    {
+        delete[] punta;
+        punta=new char[str.tamanio];
+
+        for(int i=0; i< str.tamanio; i++)
+        {
+            punta[i]=str.punta[i];
+        }
+        return *this;
+    }
+
+/*bool operator >(const my_string& a, const my_string& b)
+{
+    int i=0;
+    bool aux;
+
+    if(b.tamanio>a.tamanio)
+    {
+        aux=false;
+
+        while (a.punta[i]!='/0')
+        {
+            if(a.punta[i]>=b.punta[i]) i++;
+            else return aux;
+            if(i==a.tamanio) return true;
+        }
+        return aux;
+    }
+    else
+    {
+        aux=true;
+
+        while (b.punta[i]!='/0')
+        {
+            if(a.punta[i]>=b.punta[i]) i++;
+            else return false;
+            if(i==a.tamanio) return false;
+        }
+        return aux;
+
+    }
+}
+
+bool operator <(const my_string& a, const my_string& b)
+{
+    int i=0;
+    bool aux;
+    if(a.tamanio>b.tamanio) aux=false;
+    else aux=true;
+
+    return aux;
+}
+
+
+my_string &operator +(const my_string& str)
+
+*/
+
+
+const char& my_string::operator[](int i)
+{
+	return this->punta[i];
+}
 
 istream& operator >>(istream& is , my_string& a )
 {
@@ -52,40 +126,57 @@ ostream & operator << (ostream & os, const my_string &s)
 
     }
 
-//funcion para devolver el char en []
-// const char& my_string::operator[](int & i)
-  //  {
-    //    return punta[i];
-    //}
-//funcion para ver si son iguales
-/*bool operator ==(const my_string& a, const my_string& b)
+
+
+bool operator ==(const my_string& a, const my_string& b)
 {
-    if(a.i == b.i)
+
+    if(a.tamanio == b.tamanio)
     {
         int i=0;
         int c=0;
 
-        while(a[i]!=0)
+        while(a.punta[i]!='\0')
         {
-            if(a[i]!=b[i]) c++;
+            if(a.punta[i]!=b.punta[i]) c++;
+            else i++;
         }
         if(c>0)return false;
         else return true;
     }
     else
         return false;
-    }
-*/
-//main creando un my_string
+}
+
+
 
 int main()
 {
-    my_string s1;
+    my_string s1("1 2 3 4 5 6 7 8 9 10 11");
+    my_string s2("1 2 3 4");
 
-    cin>>s1;
 
+    cout<<s2<<endl;
+    cout<<s2.my_size()<<endl;
+    /*bool comp = s2<s1;
+
+    if(comp) cout<<"true\n";
+    else cout<<"false \n";
+
+
+    bool comp2 = s1>s2;
+
+    if(comp2) cout<<"true\n";
+    else cout<<"false\n";
+*/
+
+    cout<<s1[2]<<endl;
     cout<< s1 << endl;
+    cout<<s1.my_size()<<endl;
+
+    s1=s2;
+    cout<< s1 << endl;
+
 
     return 0;
 }
-//ya compila pero no imprime xd
