@@ -36,11 +36,12 @@ class my_string
     friend bool operator ==(const my_string& a, const my_string& b);
     const char& operator[](const int i);
     my_string &operator =(const my_string& str);
+    my_string &operator +(const my_string& str);
 
 
     friend bool operator <(const my_string& a, const my_string& b);
     friend bool operator >(const my_string& a, const my_string& b);
-    my_string &operator +(const my_string& str);
+
 
 
 
@@ -62,7 +63,7 @@ my_string& my_string ::operator =(const my_string& str)
         return *this;
     }
 
-/*bool operator >(const my_string& a, const my_string& b)
+bool operator >(const my_string& a, const my_string& b)
 {
     int i=0;
     bool aux;
@@ -103,7 +104,7 @@ bool operator <(const my_string& a, const my_string& b)
 
     return aux;
 }
-*/
+
 
 
 my_string& my_string::operator + (const my_string & str){
@@ -180,7 +181,7 @@ int main()
 
     cout<<s2<<endl;
     cout<<s2.my_size()<<endl;
-    /*bool comp = s2<s1;
+    bool comp = s2<s1;
 
     if(comp) cout<<"true\n";
     else cout<<"false \n";
@@ -190,7 +191,7 @@ int main()
 
     if(comp2) cout<<"true\n";
     else cout<<"false\n";
-*/
+
 
     cout<<s1[2]<<endl;
     cout<< s1 << endl;
