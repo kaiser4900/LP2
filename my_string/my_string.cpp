@@ -35,11 +35,11 @@ class my_string
 
     friend bool operator ==(const my_string& a, const my_string& b);
     const char& operator[](const int i);
+    my_string &operator =(const my_string& str);
 
 
     friend bool operator <(const my_string& a, const my_string& b);
     friend bool operator >(const my_string& a, const my_string& b);
-    my_string &operator =(const my_string& str);
     my_string &operator +(const my_string& str);
 
 
@@ -103,12 +103,34 @@ bool operator <(const my_string& a, const my_string& b)
 
     return aux;
 }
-
-
-my_string &operator +(const my_string& str)
-
 */
 
+
+my_string& my_string::operator + (const my_string & str){
+
+	int tam=str.my_size();
+
+	int x=0;
+	char *aux=new char[tamanio];
+
+	for(int i=0;i<tamanio;i++)
+    {
+        aux[i]=punta[i];
+    }
+	punta=new char[tam-1];
+
+	for(int i=0;i<tamanio;i++)
+    {
+         punta[i]=aux[i];
+    }
+    for(int i=tamanio-1;i<tamanio+tam-1;i++)
+    {
+        punta[i]=str.punta[x++];
+    }
+    tamanio=tamanio+tam-1;
+    delete[] aux;
+    return *this;
+}
 
 const char& my_string::operator[](int i)
 {
@@ -134,14 +156,14 @@ bool operator ==(const my_string& a, const my_string& b)
     if(a.tamanio == b.tamanio)
     {
         int i=0;
-        int c=0;
+        int x=0;
 
         while(a.punta[i]!='\0')
         {
-            if(a.punta[i]!=b.punta[i]) c++;
+            if(a.punta[i]!=b.punta[i]) x++;
             else i++;
         }
-        if(c>0)return false;
+        if(x>0)return false;
         else return true;
     }
     else
@@ -173,6 +195,10 @@ int main()
     cout<<s1[2]<<endl;
     cout<< s1 << endl;
     cout<<s1.my_size()<<endl;
+
+    my_string s3(" :v ");
+    s3=s1+s2;
+    cout<<"suma"<<s3<<endl;
 
     s1=s2;
     cout<< s1 << endl;
