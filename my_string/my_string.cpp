@@ -1,5 +1,5 @@
 #include<iostream>
-
+//Guillermo Aleman Zambrano
 using namespace std;
 
 class my_string
