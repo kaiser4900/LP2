@@ -67,32 +67,12 @@ bool operator >(const my_string& a, const my_string& b)
 {
     int i=0;
     bool aux;
+    if(a.tamanio<b.tamanio) aux=false;
+    else aux=true;
 
-    if(b.tamanio>a.tamanio)
-    {
-        aux=false;
 
-        while (a.punta[i]!='/0')
-        {
-            if(a.punta[i]>=b.punta[i]) i++;
-            else return aux;
-            if(i==a.tamanio) return true;
-        }
-        return aux;
-    }
-    else
-    {
-        aux=true;
 
-        while (b.punta[i]!='/0')
-        {
-            if(a.punta[i]>=b.punta[i]) i++;
-            else return false;
-            if(i==a.tamanio) return false;
-        }
-        return aux;
-
-    }
+    return aux;
 }
 
 bool operator <(const my_string& a, const my_string& b)
@@ -181,13 +161,13 @@ int main()
 
     cout<<s2<<endl;
     cout<<s2.my_size()<<endl;
-    bool comp = s2<s1;
+    bool comp = s1<s2;
 
     if(comp) cout<<"true\n";
     else cout<<"false \n";
 
 
-    bool comp2 = s1>s2;
+    bool comp2 = s2>s1;
 
     if(comp2) cout<<"true\n";
     else cout<<"false\n";
