@@ -7,7 +7,6 @@
 using namespace std;
 
 template<class T>
-
 class my_matrix
 {
 	private:
@@ -30,8 +29,8 @@ class my_matrix
 		my_matrix operator + ( const my_matrix & a );
 		my_matrix operator - ( const my_matrix & a );
 		my_matrix operator * ( const my_matrix & a );
-		friend ostream & operator << ( ostream & os , const my_matrix<T> s );
-    	friend istream & operator >> ( istream & is , my_matrix<T> & a );
+		//friend ostream & operator << ( ostream & os , const my_matrix<T> s );
+    	//friend istream & operator >> ( istream & is , my_matrix<T> & a );
 
 
 

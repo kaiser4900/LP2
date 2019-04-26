@@ -1,17 +1,16 @@
-
 template<class T>
 my_matrix<T> :: my_matrix ( size_t n_cols_, size_t n_rows_ )
 {
     n_cols = n_cols_;
     n_rows = n_rows_;
     ptr = new T*[ n_rows ];
-    for(int i =0; i< n_rows; i++)
+    for(int i =0; i < n_rows; i++)
     {
          ptr[i] = new T[ n_cols ];
     }
 }
 template<class T>
-my_matrix<T> :: my_matrix( const my_matrix<T> & m)
+my_matrix<T> :: my_matrix( const my_matrix<T> & m )
 {
     ptr = new T*[ m.n_cols * m.n_rows ];
     n_cols = m.n_cols;
@@ -23,13 +22,12 @@ my_matrix<T> :: my_matrix( const my_matrix<T> & m)
     }
 }
 template<class T>
-T & matrix<T> :: operator () (size_t i, size_t j) const
+T & my_matrix<T> :: operator () (size_t i, size_t j)
 {
     return ptr[i][j];
 }
-/*
 template<class T>
-my_matrix<T> :: my_matrix operator + ( const my_matrix<T> & m ) const
+my_matrix<T> my_matrix<T> :: operator + ( const my_matrix<T> & m )
 {
     if( n_cols != m.n_cols || n_rows != m.n_rows ) return 1;
 
@@ -43,7 +41,7 @@ my_matrix<T> :: my_matrix operator + ( const my_matrix<T> & m ) const
     return result;
 }
 template<class T>
-my_matrix<T> :: my_matrix operator - (const my_matrix<T> & m) const
+my_matrix<T> my_matrix<T> :: operator - (const my_matrix<T> & m)
 {
     if(n_cols != m.n_cols || n_rows != m.n_rows) return 1;
 
@@ -57,7 +55,7 @@ my_matrix<T> :: my_matrix operator - (const my_matrix<T> & m) const
     return result;
 }
 template<class T>
-my_matrix<T> :: my_matrix operator * (const my_matrix<T> & m) const
+my_matrix<T> my_matrix<T> :: operator * (const my_matrix<T> & m)
 {
     if(n_cols != m.n_rows) return 1;
 
@@ -70,7 +68,7 @@ my_matrix<T> :: my_matrix operator * (const my_matrix<T> & m) const
         for(int j = 0; j < result.n_cols; j++)
         {
             index_result = i * result.cols + j;
-            *( result.ptr + inde_result ) = 0;
+            *( result.ptr + index_result ) = 0;
             for(int k = 0; k < result.n_cols; k++)
             {
                 index_a = i*n_cols + k;
@@ -80,7 +78,7 @@ my_matrix<T> :: my_matrix operator * (const my_matrix<T> & m) const
         }
     }
     return result;
-}
+}/*
 template<class T>
 ostream & operator << ( ostream & os , const my_matrix<T> & s )
 {
