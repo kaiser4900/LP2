@@ -16,22 +16,35 @@ class my_matrix
 
 	public:
 
-		my_matrix ( size_t n_cols_ = 0, size_t n_rows_ = 0);
-		my_matrix ( const my_matrix<T> & ptr_);
+		my_matrix ( size_t n_cols_ = 0, size_t n_rows_ = 0 );
+		my_matrix ( const my_matrix<T> & ptr_ );
 		~my_matrix()
 		{
 		    for(int i = 0; i < n_rows; i++)
 		     delete [] ptr;
         }
-        T & operator() (size_t i, size_t j);
+        T & operator() ( size_t i, size_t j );
 		my_matrix<T> & operator = ( const my_matrix<T> & a );
 		bool operator == ( const my_matrix<T> & a );
 		my_matrix operator + ( const my_matrix & a );
 		my_matrix operator - ( const my_matrix & a );
 		my_matrix operator * ( const my_matrix & a );
-		//friend ostream & operator << ( ostream & os , const my_matrix<T> s );
-    	//friend istream & operator >> ( istream & is , my_matrix<T> & a );
-
+		friend ostream & operator << ( ostream & os , const my_matrix<T> s )
+		{
+        T **p = s.ptr;
+        os << "\n";
+        for(int i = 0; i< s.n_rows; ++i)
+        {
+            os << " ";
+            for(int j = 0; j < s.n_cols; j++)
+            {
+                os << *(p + i * s.n_cols + j) << " ";
+            }
+            os <<"\n";
+        }
+        return os;
+        }
+    	friend istream & operator >> ( istream & is , my_matrix<T> & a );
 
 
 };

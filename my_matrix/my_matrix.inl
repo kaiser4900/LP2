@@ -78,22 +78,4 @@ my_matrix<T> my_matrix<T> :: operator * (const my_matrix<T> & m)
         }
     }
     return result;
-}/*
-template<class T>
-ostream & operator << ( ostream & os , const my_matrix<T> & s )
-{
-    T *p = s.ptr;
-    os << "\n";
-    for(int i = 0; i< s.rows; ++i)
-    {
-        os << " ";
-        for(int j = 0; j < s.cols; j++)
-        {
-            os << *(p + i * s.cols + j) << " ";
-        }
-        os <<"\n";
-    }
-    os <<"\n";
-    return os;
 }
-*/

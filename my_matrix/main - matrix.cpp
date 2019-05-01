@@ -8,6 +8,6 @@ int main()
     my_matrix<int> s2(s1);
     int a=s2(1,1);
     cout<<"hi\n";
-    cout<<a<<endl;
+    cout<<s1<<endl;
     return 0;
 }
