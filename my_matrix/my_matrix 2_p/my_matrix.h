@@ -2,8 +2,6 @@
 #define MY_MATRIX_H
 
 #include<iostream>
-#include<vector>
-
 using namespace std;
 
 template<class T>
