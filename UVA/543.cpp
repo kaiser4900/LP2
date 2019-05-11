@@ -40,6 +40,6 @@ int main()
             }
         }
     }
-    return 0;
     delete []P;
+    return 0;
 }
