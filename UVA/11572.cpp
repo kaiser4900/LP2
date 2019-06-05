@@ -1,5 +1,7 @@
 #include <iostream>
 #include <set>
+#include <assert.h>
+
 using namespace std;
 int main() {
 
@@ -10,6 +12,7 @@ int main() {
         n=0;
         r=0;
         cin>>n;
+        assert(n<109);
         set<int,greater<int> >snowflakes;
         for(int i =0; i< n; i++)
         {
