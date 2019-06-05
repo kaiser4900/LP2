@@ -12,7 +12,9 @@ int main() {
 		int n = 0;
 		while(getline(cin, tree)) {
 			if(tree.compare("") == 0)
-				break;
+                {
+                    break;
+                }
 			trees[tree]++;
 			n++;
 		}
