@@ -5,7 +5,8 @@ using namespace std;
 int main() {
 	int t;
 	cin>>t;
-	t++;
+	getchar();
+    getchar();
 	while(t--) {
 		map<string, int> trees;
 		string tree;
@@ -23,6 +24,7 @@ int main() {
             cout << i.first << " " << fixed << setprecision(4) << (i.second*100.0)/n << endl;
 
         }
+        if(t>0)cout<<"\n";
 	}
     return 0;
 }
