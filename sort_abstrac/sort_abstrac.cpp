@@ -127,6 +127,7 @@ public:
     ~merge_s()
     {
         delete [] A;
+        delete[]a;
     }
     void merge_(int *A,int i,int m,int j)
     {
@@ -219,7 +220,6 @@ int main()
 
     delete[]TA;
     delete[]TB;
-    delete[]a;
 
     return 0;
 }
