@@ -8,6 +8,7 @@
 using namespace std;
 int *TA;
 int *TB;
+int *a;
 int N=pow(10,5);
 
 template<class T>
@@ -26,11 +27,6 @@ private:
     T *A;
     int n;
 public:
-   /* insert(T* a,int n_)
-    {
-        A=a;
-        n=n_;
-    }*/
     ~insert()
     {
         delete [] A;
@@ -69,11 +65,6 @@ private:
     T *A;
     int n;
 public:
-    /*bubble_sort(T* a,int n_)
-    {
-        A=a;
-        n=n_;
-    }*/
     ~bubble_sort()
     {
         delete [] A;
@@ -105,11 +96,6 @@ private:
     T *A;
     int n;
 public:
-    /*selection(T* a,int n_)
-    {
-        A=a;
-        n=n_;
-    }*/
     ~selection()
     {
         delete [] A;
@@ -130,6 +116,59 @@ public:
         }
     }
 };
+template<class T>
+class merge_s: public sort_<T>
+{
+private:
+    T *A;
+    int n;
+public:
+
+    ~merge_s()
+    {
+        delete [] A;
+        delete [] a;
+    }
+    void merge_(int *A,int i,int m,int j)
+    {
+        int b=i;int d=m+1; int c=0;
+        while(b<=m&&d<=j)
+        {
+            if(A[b]>=A[d])
+            {
+                a[c]=A[d];
+                d++;
+                c++;
+            }
+            else
+            {
+                a[c]=A[b];
+                b++;
+                c++;
+            }
+        }
+
+        while(b<=m) a[c++]=A[b++];
+        while(d<=j) a[c++]=A[d++];
+
+        for(int in=0; in<(j-i)+1;in++)
+            A[in+i]=a[in];
+    }
+    void merge_sort(int *A,int i,int j)
+    {
+        if(i==j)return;
+        int m=(i+j)/2;
+        merge_sort(A,i,m);
+        merge_sort(A,m+1,j);
+        merge_(A,i,m,j);
+    }
+    void fsort(T *A, int n)
+    {
+        merge_sort(A,0,n-1);
+    }
+
+};
+
 bool test_sort( sort_<int> * s, const int *A, int n)
 {
     memcpy(TA,A,sizeof(int)*n);
@@ -148,11 +187,15 @@ bool test_sort( sort_<int> * s, const int *A, int n)
 int main()
 {
     vector<sort_<int>*>VS;
+    srand(time(NULL));
     int* A=new int[N];
-
+	TA=new int [N];
+	TB=new int [N];
+	a= new int[N];
+	VS.push_back(new merge_s<int>());
+	VS.push_back(new insert<int>());
     VS.push_back(new selection<int>());
     VS.push_back(new bubble_sort<int>());
-    VS.push_back(new insert<int>());
 
     for(int n=100;n<=N;n*=10)
     {
@@ -163,7 +206,7 @@ int main()
         }
         cout<<n<<" \n";
 
-        for(int s=0; s<3; s++)
+        for(int s=0; s<VS.size(); s++)
         {
             if(!test_sort(VS[s],A,n))
                {
@@ -177,5 +220,7 @@ int main()
 
     delete[]TA;
     delete[]TB;
+
+
     return 0;
 }

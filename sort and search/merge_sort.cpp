@@ -10,7 +10,7 @@ using namespace std;
 int *TA;
 int *TB;
 int *a;
-int N=pow(10,5);
+int N=pow(10,8);
 
 
 typedef void(*fun_sort)(int*,int,int);
